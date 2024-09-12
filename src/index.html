@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recintos Zoologico</title>
+    <script type="module" src="index.js"></script>
+    <title>Desafio StartDB 2024</title>
 </head>
 <body>
-    <script src="./recintos-zoo.test.js"></script>
+    <h1>Avalia Recintos:</h1>
+    <label for="animal">Animal:</label><br>
+    <input type="text" id="input-animal" name="animal"><br>    
+    <label for="quantidade">Quantidade:</label><br>
+    <input type="number" id="input-quantidade" name="quantidade" min="0" max="99999">
+    <button id="validar" type="button" onclick="new Validacao().valida()">Validar!</button>
+    <h1>Resultado:</h1>
+    <label id="resultado"></label>    
 </body>
 </html>

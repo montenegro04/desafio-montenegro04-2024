@@ -1,102 +1,42 @@
+import { Animais } from "./animais";
+import { Recinto } from "./recintos";
+
 class RecintosZoo {
+
     analisaRecintos(animal, quantidade) {
-        let savana = new Array(10);
-        savana.fill("");    // Inicializa o vetor com strings vazias
-        let floresta = new Array(5);     //VAZIO
-        floresta.fill("");  
-        let savanaErio = new Array(7);
-        savanaErio.fill("");   
-        let rio = new Array(8);     //VAZIO
-        rio.fill("");   
-        let savana2 = new Array(9);
-        savana2.fill("");
+        
+        //inicializa animais e recintos
+        let macaco = new Animais('MACACO', 1, 'SAVANA OU FLORESTA', 'ONIVORO');
+        let leao = new Animais('LEAO', 3, 'SAVANA', 'CARNIVORO');
+        let gazela = new Animais('GAZELA', 2, 'SAVANA', 'HERBIVORO');
+        let leopardo = new Animais('LEOPARDO', 2, 'SAVANA', 'CARNIVORO');
+        let crocodilo = new Animais('CROCODILO', 3, 'RIO', 'CARNIVORO');
+        let hipotamo = new Animais('HIPOPOTAMO', 4, 'SAVANA OU RIO', 'HERBIVORO');
 
-        for(let i=0;i<3;i++){   //adiciona os animais existentes
-            savana[i] ="MACACO";  
-            savana2[i] = "LEAO";    
-            savanaErio[i] ="GAZELA";  
-        }
+        let savana = new Recinto(1, 'savana', 10, new [macaco, macaco, macaco]);
+        let floresta = new Recinto(2, 'floresta', 5, new []);
+        let savanaErio = new Recinto(3, 'savana e rio', 7, new [gazela, gazela]);
+        let rio = new Recinto(4, 'rio', 8, new []);
+        let savana2 = new Recinto(5, 'savana', 9, new [leao, leao, leao]);
 
-        let entrada = prompt("Digite o animal e a quantidade a serem inseridos usando ',': ");
-        let [animal, quantidade] = entrada.split(',');  //usa virgula para separar animal e quantidade
-        quantidade = parseInt(quantidade);  //converte quantidade em inteiro
 
-        for(let i=0;i<1;i++){
-            if(animal=='LEAO'){
-                if(savana.length + quantidade < 10){
-                    for (let i = 0; i < quantidade; i++) {
-                        savana.push(animal);
-                    }
+        let listaAnimais = [macaco, leao, gazela, leopardo, crocodilo, hipotamo];
+        let listaRecintos = [savana, floresta, savanaErio, rio, savana2];
+
+        let retorno = 'Recinto não disponível'
+
+        for(let i;i<5;i++){
+            let recintoAtual = listaRecintos[i]
+
+            if(recintoAtual.especie == animal) {
+                if(recintoAtual.tamanhoTotal - quantidade) {
+                    retorno = 'Recinto disponível';
                 }
             }
-            if(animal=='GAZELA'){
-                if(savana2.length + quantidade < 9){
-                    for (let i = 0; i < quantidade; i++) {
-                        savana2.push(animal);
-                    }
-                }
-                if(savana.length + quantidade < 10){
-                    for (let i = 0; i < quantidade; i++) {
-                        savana.push(animal);
-                    }
-                }
-            }
-            if(animal=='HIPOPOTAMO'){
-                if(rio.length + quantidade < 8){
-                    for (let i = 0; i < quantidade; i++) {
-                        rio.push(animal);
-                    }
-                }
-                if(savana2.length + quantidade < 9){
-                    for (let i = 0; i < quantidade; i++) {
-                        savana2.push(animal);
-                    }
-                }
-                if(savana.length + quantidade < 10){
-                    for (let i = 0; i < quantidade; i++) {
-                        savana.push(animal);
-                    }
-                }
-            }
-            if(animal=='LEOPARDO'){
-                if(savana2.length + quantidade < 9){
-                    for (let i = 0; i < quantidade; i++) {
-                        savana2.push(animal);
-                    }
-                }
-                if(savana.length + quantidade < 10){
-                    for (let i = 0; i < quantidade; i++) {
-                        savana.push(animal);
-                    }
-                } 
-            }
-            if(animal=='MACACO'){
-                if(savana.length + quantidade < 10){
-                    for (let i = 0; i < quantidade; i++) {
-                        savana.push(animal);
-                    }
-                }
-                if(savana2.length + quantidade < 9){
-                    for (let i = 0; i < quantidade; i++) {
-                        savana2.push(animal);
-                    }
-                }
-                if(floresta.length + quantidade < 5){
-                    for (let i = 0; i < quantidade; i++) {
-                        floresta.push(animal);
-                    }
-                }               
-            }
-            if(animal=='CROCODILO'){
-                if(rio.length + quantidade < 8){
-                    for (let i = 0; i < quantidade; i++) {
-                        rio.push(animal);
-                    }
-                }
-            }                
-        }
+        }           
+
     }
+
 }
 
 export { RecintosZoo as RecintosZoo };
-
