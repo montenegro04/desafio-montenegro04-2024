@@ -14,8 +14,9 @@ class Validacao {
         //Chama método AnalisaRecintos passando 2 parâmetros
         const resultado = recinto.analisaRecintos(inputAnimal, inputQuantidade);
 
-        const resultadoLabelHTML = document.getElementById('resultado');
+        console.log(resultado);
 
+        const resultadoLabelHTML = document.getElementById('resultado');
         resultadoLabelHTML.textContent = resultado;        
     }
 }
